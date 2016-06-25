@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -14,43 +15,80 @@ import com.nirakar.spring.cache.data.Employee;
 
 
 @Component ("employeeDao")
-@Service
 public class EmployeeDAOImpl implements EmployeeDAO {
 	
 	@Autowired
 	EmployeeSearchFromCSV csvEmployeeSearch;
 	
 	//@Cacheable(value="employeeResultsByIds",key="#id" )
+	
 	@Cacheable("employeeResultsByIds")
 	public Employee getEmployeeById(int id) {
-		System.out.println("getEmployeeById ----- > executed");
+		System.out.println("******Cache Not executed*********");
 		List<Employee> listEmployee =csvEmployeeSearch.employeeListFromCSVfile();
 		//System.out.println(listEmployee.get(id));
-		return listEmployee.get(id);
+		for(Employee e:listEmployee){
+			if(e.getId()==id){
+				return e;
+			}
+		}
+		return null;
+		
+		
 	}
-
+	@Cacheable("employeeResultsByFirstNames")
 	public Employee getEmployeeByFirstName(String fname) {
-		// TODO Auto-generated method stub
+		System.out.println("******Cache Not executed*********");
+		List<Employee> listEmployee =csvEmployeeSearch.employeeListFromCSVfile();
+		for(Employee e:listEmployee){
+			if(e.getFirstName().equalsIgnoreCase(fname)){
+				return e;
+			}
+		}
 		return null;
 	}
-
+	@Cacheable("employeeResultsByLastNames")
 	public Employee getEmployeeByLastName(String lname) {
-		// TODO Auto-generated method stub
+		System.out.println("******Cache Not executed*********");
+		List<Employee> listEmployee =csvEmployeeSearch.employeeListFromCSVfile();
+		for(Employee e:listEmployee){
+			if(e.getLastName().equalsIgnoreCase(lname)){
+				return e;
+			}
+		}
 		return null;
 	}
-
+	@Cacheable("employeeResultsByCompanyNames")
 	public Employee getEmployeeByCompanyName(String cname) {
-		// TODO Auto-generated method stub
+		System.out.println("******Cache Not executed*********");
+		List<Employee> listEmployee =csvEmployeeSearch.employeeListFromCSVfile();
+		for(Employee e:listEmployee){
+			if(e.getCompanyName().equalsIgnoreCase(cname)){
+				return e;
+			}
+		}
 		return null;
 	}
-
+	@Cacheable("employeeResultsByTechnologys")
 	public Employee getEmployeeByTechnology(String tname) {
-		// TODO Auto-generated method stub
+		System.out.println("******Cache Not executed*********");
+		List<Employee> listEmployee =csvEmployeeSearch.employeeListFromCSVfile();
+		for(Employee e:listEmployee){
+			if(e.getTechnology().equalsIgnoreCase(tname)){
+				return e;
+			}
+		}
 		return null;
 	}
-
+	@Cacheable("employeeResultsByExperiences")
 	public Employee getEmployeeByExperience(int exp) {
-		// TODO Auto-generated method stub
+		System.out.println("******Cache Not executed*********");
+		List<Employee> listEmployee =csvEmployeeSearch.employeeListFromCSVfile();
+		for(Employee e:listEmployee){
+			if(e.getNoOfExp()==exp){
+				return e;
+			}
+		}
 		return null;
 	}
 

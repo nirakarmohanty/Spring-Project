@@ -35,6 +35,7 @@ public class EmployeeSearchFromCsvImpl implements EmployeeSearchFromCSV {
 	}
 
 	private void run() {
+		System.out.println("Run method started");
 		String csvFile = "D:/Java_Study/Spring-Project/src/main/resources/employee.csv";
 		BufferedReader br = null;
 		String line = "";
