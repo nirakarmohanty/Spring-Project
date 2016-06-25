@@ -9,7 +9,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.nirakar.spring.cache.dao.EmployeeSearchFromCSV;
 import com.nirakar.spring.cache.data.Employee;
@@ -18,8 +18,8 @@ import com.nirakar.spring.cache.data.Employee;
  * by reading csv file through File Reader Operation. This layer can be marked as Service layer.
  * @author NIRAKAR
  *
- */
-@Repository("csvEmployeeSearch")
+ */ 
+@Component("csvEmployeeSearch")
 public class EmployeeSearchFromCsvImpl implements EmployeeSearchFromCSV {
 	List<Employee> listEmployee = new ArrayList<Employee>();
 
