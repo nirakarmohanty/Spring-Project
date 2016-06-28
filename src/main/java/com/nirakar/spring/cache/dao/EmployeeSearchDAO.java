@@ -8,9 +8,9 @@ import com.nirakar.spring.cache.data.Employee;
  * @author NIRAKAR
  *
  */
-public interface EmployeeSearchFromCSV {
+public interface EmployeeSearchDAO {
 	
-	public List<Employee> employeeListFromCSVfile();
+	public List<Employee> getEmployeeList();
 	
 	public boolean updateEployeeList(Employee obj);
 }

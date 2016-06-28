@@ -16,7 +16,7 @@ public class ApplicationMain {
 		
 		System.out.println(employeeDAOImplObj.getEmployeeById(2));		
 		System.out.println(employeeDAOImplObj.getEmployeeById(2));		
-		System.out.println(employeeDAOImplObj.getEmployeeById(2));		
+		System.out.println(employeeDAOImplObj.getEmployeeById(3));		
 		System.out.println(employeeDAOImplObj.getEmployeeById(2));
 		
 		System.out.println(employeeDAOImplObj.getEmployeeByFirstName("Nirakar"));		

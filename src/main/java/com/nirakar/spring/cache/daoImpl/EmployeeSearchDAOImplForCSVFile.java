@@ -11,16 +11,16 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 
-import com.nirakar.spring.cache.dao.EmployeeSearchFromCSV;
+import com.nirakar.spring.cache.dao.EmployeeSearchDAO;
 import com.nirakar.spring.cache.data.Employee;
 
-/** This class implements {@link EmployeeSearchFromCSV} interface to implement Employee search 
+/** This class implements {@link EmployeeSearchDAO} interface to implement Employee search 
  * by reading csv file through File Reader Operation. This layer can be marked as Service layer.
  * @author NIRAKAR
  *
  */ 
 @Component("csvEmployeeSearch")
-public class EmployeeSearchFromCsvImpl implements EmployeeSearchFromCSV {
+public class EmployeeSearchDAOImplForCSVFile implements EmployeeSearchDAO {
 	List<Employee> listEmployee = new ArrayList<Employee>();
 
 	@PostConstruct
@@ -29,13 +29,13 @@ public class EmployeeSearchFromCsvImpl implements EmployeeSearchFromCSV {
 		run();
 	}
 
-	public List<Employee> employeeListFromCSVfile() {
+	public List<Employee> getEmployeeList() {
 
 		return listEmployee;
 	}
 
 	private void run() {
-		System.out.println("Run method started");
+		System.out.println("File uploading started");
 		String csvFile = "D:/Java_Study/Spring-Project/src/main/resources/employee.csv";
 		BufferedReader br = null;
 		String line = "";
